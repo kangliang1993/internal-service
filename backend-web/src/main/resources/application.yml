@@ -15,7 +15,7 @@ server:
 spring:
   # 数据源
   datasource:
-    url: jdbc:mysql://www.popboy.net:3306/xboot?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://www.popboy.net:3306/internal?autoReconnect=true&serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
     username: root
     # Jasypt加密 可到common-utils中找到JasyptUtil加解密工具类生成加密结果 格式为ENC(加密结果) 以下解密结果为123456
     password: ENC(F4B0s6u9xcDw3V+P0qC4CA==)
@@ -116,17 +116,6 @@ xboot:
   # 日志记录方式 true使用Elasticsearch记录 false记录至数据库中
   logRecord:
     es: false
-  # 七牛云配置
-  qiniu:
-    accessKey: 你的accessKey
-    secretKey: 你的secretKey
-    bucket: 你的空间名
-    domain: 你的域名，如http://p77xsahe9.bkt.clouddn.com
-    # 存储区域 -1自动判断 0华东 1华北 2华南 3北美 4东南亚
-    zone: -1
-  # mob api配置 mob官网注册申请即可
-  mob:
-    appKey: 你的appKey
 
 # 需要验证码校验的接口路径 支持通配符 自动过滤拦截校验 无需开发人员再次校验
 captcha:

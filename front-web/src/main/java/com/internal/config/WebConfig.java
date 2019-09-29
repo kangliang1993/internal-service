@@ -5,8 +5,6 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
-import com.lips.api.permission.interceptor.AccountInterceptor;
-import com.lips.api.service.IMemberService;
 import org.joda.time.DateTime;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,26 +19,14 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
-import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 
-/**
- * <p>
- * WEB 初始化相关配置
- * </p>
- *
- * @author qiang
- * @since 2018-1-11
- */
 @ControllerAdvice
 @Configuration
 public class WebConfig extends WebMvcConfigurationSupport {
-
-    @Resource
-    private IMemberService userService;
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -81,24 +67,18 @@ public class WebConfig extends WebMvcConfigurationSupport {
 
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
-        argumentResolvers.add(new CurrentUserArgumentResolver());
         super.addArgumentResolvers(argumentResolvers);
     }
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new AccountInterceptor(userService));
         super.addInterceptors(registry);
     }
 
-    @SuppressWarnings("Convert2Lambda")
     @Bean
     public Converter<String, Date> addNewConvert() {
-        return new Converter<String, Date>() {
-            @Override
-            public Date convert(String source) {
-                DateTime dateTime = DateTime.parse(source);
-                return dateTime.toDate();
-            }
+        return source -> {
+            DateTime dateTime = DateTime.parse(source);
+            return dateTime.toDate();
         };
     }
 }

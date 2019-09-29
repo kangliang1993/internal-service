@@ -9,8 +9,9 @@
     </parent>
     <groupId>internal</groupId>
     <artifactId>front-web</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     <name>front-web</name>
+    <packaging>jar</packaging>
     <description>网站前台接口服务</description>
 
     <properties>
@@ -21,12 +22,12 @@
     <dependencies>
         <dependency>
             <groupId>internal</groupId>
-            <artifactId>front-service</artifactId>
+            <artifactId>internal-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>internal</groupId>
-            <artifactId>common</artifactId>
+            <artifactId>front-service</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -69,6 +70,16 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-
+    <build>
+        <finalName>front-web</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>application.yml</include>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
 </project>

@@ -11,15 +11,21 @@
 
     <artifactId>front-service</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>internal</groupId>
             <artifactId>dao</artifactId>
+            <scope>compile</scope>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>internal</groupId>
             <artifactId>common</artifactId>
+            <scope>compile</scope>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

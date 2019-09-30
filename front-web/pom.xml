@@ -12,22 +12,18 @@
     <version>1.0-SNAPSHOT</version>
     <name>front-web</name>
     <packaging>jar</packaging>
-    <description>网站前台接口服务</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
+        <mainClass>com.internal.FrontWebApplication</mainClass>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>internal</groupId>
-            <artifactId>internal-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>internal</groupId>
             <artifactId>front-service</artifactId>
+            <scope>compile</scope>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -64,11 +60,11 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
+        </dependency>-->
     </dependencies>
     <build>
         <finalName>front-web</finalName>
@@ -81,5 +77,31 @@
                 </includes>
             </resource>
         </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.1.8.RELEASE</version>
+                <configuration>
+                    <!-- 工程主入口-->
+                    <mainClass>com.internal.FrontWebApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 </project>

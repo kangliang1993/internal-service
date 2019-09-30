@@ -59,13 +59,13 @@ public class NewsController {
         return newsService.getCompanyList();
     }
 
-    @GetMapping(value = "getCompanyDetail")
+    @GetMapping(value = "getJoinList")
     @ApiOperation(value = "人才招聘", notes = "返回list，根据getDetail接口获取详情")
     public List<NewsListModel> getJoinList() {
         return newsService.getJoinList();
     }
 
-    @GetMapping(value = "getCompanyDetail")
+    @GetMapping(value = "getAboutUs")
     @ApiOperation(value = "商务合作", notes = "只返回一条信息，使用content渲染页面")
     public News getAboutUs() {
         return newsService.getAboutUs();

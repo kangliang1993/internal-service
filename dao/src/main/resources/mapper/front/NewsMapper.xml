@@ -9,7 +9,7 @@
         ORDER BY display DESC
     </select>
 
-    <select id="selectListByTypeAndLimit">
+    <select id="selectListByTypeAndLimit" resultType="com.internal.vo.NewsListModel">
         SELECT id,title,create_time,page_view,short_content,title_image,content
         FROM front_news
         WHERE del_flag=0 AND show_flag =1 AND type =#{type}
